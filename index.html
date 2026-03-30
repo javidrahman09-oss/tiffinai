@@ -145,21 +145,7 @@ footer { text-align:center; margin-top:40px; padding-top:18px; border-top:1px so
     <button class="pro-badge" onclick="openPaywall()">✦ Pro</button>
   </header>
 
-  <!-- Groq API Setup -->
-  <div class="setup-banner" id="setup-banner">
-    <h3>⚡ Free setup — get your Groq API key (takes 2 minutes, 100% free)</h3>
-    <p>Groq is completely free. No credit card needed.</p>
-    <div class="setup-steps">
-      <div class="setup-step"><strong>1.</strong> Open <a href="https://console.groq.com" target="_blank" class="groq-link">console.groq.com</a> → Sign up free</div>
-      <div class="setup-step"><strong>2.</strong> Click <strong>"API Keys"</strong> on the left → click <strong>"Create API Key"</strong></div>
-      <div class="setup-step"><strong>3.</strong> Copy the key (starts with <strong>gsk_</strong>) → paste below</div>
-    </div>
-    <div class="key-row">
-      <input type="password" class="key-input" id="api-key-input" placeholder="gsk_..." />
-      <button class="key-save-btn" onclick="saveKey()">Activate Free →</button>
-    </div>
-    <div class="key-note">🔒 Saved only in your browser. Never shared with anyone.</div>
-  </div>
+
 
   <div class="hero">
     <h1>What can I cook<br>with <em>what I have?</em></h1>
@@ -245,23 +231,11 @@ let selectedLang = 'English';
 let imageBase64 = null;
 let selectedPlan = 199;
 
-// ── INIT ─────────────────────────────────────────────────
-window.onload = () => {
-  if (getKey()) document.getElementById('setup-banner').style.display = 'none';
-};
+// ── API KEY — REPLACE WITH YOUR GROQ KEY ─────────────────
+const GROQ_API_KEY = 'PASTE_YOUR_gsk_KEY_HERE';
+function getKey() { return GROQ_API_KEY; }
 
-// ── KEY ──────────────────────────────────────────────────
-function saveKey() {
-  const key = document.getElementById('api-key-input').value.trim();
-  if (!key.startsWith('gsk_')) {
-    alert('Please enter a valid Groq key — it starts with gsk_\n\nGet one free at console.groq.com');
-    return;
-  }
-  localStorage.setItem('tiffin_groq_key', key);
-  document.getElementById('setup-banner').style.display = 'none';
-  toast('✅ Activated! Ready to find recipes.');
-}
-function getKey() { return localStorage.getItem('tiffin_groq_key'); }
+window.onload = () => {};
 
 // ── LANG ─────────────────────────────────────────────────
 function setLang(btn) {
@@ -300,10 +274,8 @@ function resetAll() {
 // ── GROQ API ─────────────────────────────────────────────
 async function callGroq(userMessage) {
   const key = getKey();
-  if (!key) {
-    document.getElementById('setup-banner').style.display = 'block';
-    hideLoading();
-    document.getElementById('api-key-input').focus();
+  if (!key || key === 'PASTE_YOUR_gsk_KEY_HERE') {
+    showError('App not configured yet. Owner needs to add API key.');
     return null;
   }
 
@@ -419,9 +391,7 @@ function showError(msg) {
   const box = document.getElementById('error-box');
   box.style.display = 'block';
   if (msg.includes('401') || msg.includes('invalid_api_key')) {
-    localStorage.removeItem('tiffin_groq_key');
-    document.getElementById('setup-banner').style.display = 'block';
-    box.innerHTML = '❌ Invalid Groq key. Please re-enter your key above.';
+    box.innerHTML = '❌ API key error. Please contact support.';
   } else if (msg.includes('rate_limit')) {
     box.innerHTML = '⏳ Too many requests. Wait 1 minute and try again.';
   } else {

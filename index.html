@@ -7,110 +7,127 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 :root {
-  --saffron: #E8821A;
-  --saffron-light: #FDF0E0;
-  --saffron-dark: #C06A0C;
-  --leaf: #2E7D52;
-  --cream: #FEFAF4;
-  --ink: #1A1208;
-  --muted: #7A6A55;
-  --border: #EDE3D4;
-  --radius: 16px;
+  --saffron: #E8821A; --saffron-light: #FDF0E0; --saffron-dark: #C06A0C;
+  --leaf: #2E7D52; --cream: #FEFAF4; --ink: #1A1208; --muted: #7A6A55;
+  --border: #EDE3D4; --radius: 16px;
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--ink); min-height: 100vh; }
-body::before { content:''; position:fixed; inset:0; background: radial-gradient(circle at 20% 20%, rgba(232,130,26,0.08), transparent 50%), radial-gradient(circle at 80% 80%, rgba(245,200,66,0.08), transparent 50%); pointer-events:none; z-index:0; }
+body::before { content:''; position:fixed; inset:0; background: radial-gradient(circle at 20% 20%, rgba(232,130,26,0.07), transparent 50%), radial-gradient(circle at 80% 80%, rgba(245,200,66,0.07), transparent 50%); pointer-events:none; z-index:0; }
 .wrap { position:relative; z-index:1; max-width:680px; margin:0 auto; padding:0 20px 80px; }
 
-header { display:flex; align-items:center; justify-content:space-between; padding:24px 0 20px; border-bottom:1px solid var(--border); margin-bottom:32px; }
+header { display:flex; align-items:center; justify-content:space-between; padding:24px 0 20px; border-bottom:1px solid var(--border); margin-bottom:28px; flex-wrap:wrap; gap:10px; }
 .logo { font-family:'Playfair Display',serif; font-size:26px; font-weight:900; }
 .logo span { color:var(--saffron); }
-.pro-badge { font-size:11px; font-weight:500; background:var(--saffron); color:white; padding:4px 10px; border-radius:20px; cursor:pointer; border:none; }
+.free-badge { font-size:11px; font-weight:500; background:#E1F5EE; color:#0F6E56; padding:4px 10px; border-radius:20px; border:1px solid #9FE1CB; }
+.pro-badge { font-size:11px; font-weight:500; background:var(--saffron); color:white; padding:4px 10px; border-radius:20px; cursor:pointer; border:none; font-family:'DM Sans',sans-serif; }
 
 /* Setup banner */
-.setup-banner { background:#fff3cd; border:1px solid #ffc107; border-radius:var(--radius); padding:16px 20px; margin-bottom:24px; }
-.setup-banner h3 { font-size:14px; font-weight:500; margin-bottom:10px; color:#856404; }
-.key-input-wrap { display:flex; gap:8px; }
-.key-input { flex:1; padding:10px 14px; border:1.5px solid #ffc107; border-radius:10px; font-size:13px; font-family:'DM Sans',sans-serif; background:white; }
+.setup-banner { background:linear-gradient(135deg,#E1F5EE,#d4f0e4); border:1px solid #9FE1CB; border-radius:var(--radius); padding:18px 20px; margin-bottom:24px; }
+.setup-banner h3 { font-size:14px; font-weight:500; margin-bottom:4px; color:#085041; }
+.setup-banner p { font-size:12px; color:#0F6E56; margin-bottom:12px; line-height:1.5; }
+.setup-steps { display:flex; flex-direction:column; gap:6px; margin-bottom:14px; }
+.setup-step { font-size:12px; color:#085041; display:flex; gap:8px; align-items:flex-start; line-height:1.5; }
+.setup-step strong { min-width:18px; }
+.key-row { display:flex; gap:8px; }
+.key-input { flex:1; padding:10px 14px; border:1.5px solid #9FE1CB; border-radius:10px; font-size:13px; font-family:'DM Sans',sans-serif; background:white; color:var(--ink); }
 .key-input:focus { outline:none; border-color:var(--saffron); }
-.key-save-btn { padding:10px 16px; background:var(--saffron); color:white; border:none; border-radius:10px; font-size:13px; font-weight:500; cursor:pointer; font-family:'DM Sans',sans-serif; white-space:nowrap; }
-.key-save-btn:hover { background:var(--saffron-dark); }
-.key-note { font-size:11px; color:#856404; margin-top:6px; }
+.key-save-btn { padding:10px 16px; background:#1D9E75; color:white; border:none; border-radius:10px; font-size:13px; font-weight:500; cursor:pointer; font-family:'DM Sans',sans-serif; white-space:nowrap; transition:background .2s; }
+.key-save-btn:hover { background:#0F6E56; }
+.key-note { font-size:11px; color:#0F6E56; margin-top:6px; }
+.groq-link { color:#0F6E56; font-weight:500; }
 
-.hero { text-align:center; margin-bottom:32px; }
-.hero h1 { font-family:'Playfair Display',serif; font-size:clamp(26px,6vw,40px); font-weight:900; line-height:1.15; margin-bottom:10px; }
+.hero { text-align:center; margin-bottom:28px; }
+.hero h1 { font-family:'Playfair Display',serif; font-size:clamp(24px,6vw,38px); font-weight:900; line-height:1.15; margin-bottom:10px; }
 .hero h1 em { font-style:italic; color:var(--saffron); }
 .hero p { font-size:15px; color:var(--muted); font-weight:300; line-height:1.6; }
 
-.lang-bar { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin:16px 0 24px; }
-.lang-btn { padding:6px 14px; border-radius:20px; border:1.5px solid var(--border); background:white; font-size:13px; font-family:'DM Sans',sans-serif; cursor:pointer; transition:all .2s; color:var(--muted); font-weight:500; }
-.lang-btn.active, .lang-btn:hover { border-color:var(--saffron); background:var(--saffron-light); color:var(--saffron-dark); }
+.lang-bar { display:flex; gap:7px; justify-content:center; flex-wrap:wrap; margin:14px 0 22px; }
+.lang-btn { padding:5px 13px; border-radius:20px; border:1.5px solid var(--border); background:white; font-size:12px; font-family:'DM Sans',sans-serif; cursor:pointer; color:var(--muted); font-weight:500; transition:all .2s; }
+.lang-btn.active,.lang-btn:hover { border-color:var(--saffron); background:var(--saffron-light); color:var(--saffron-dark); }
 
-.upload-zone { border:2.5px dashed var(--border); border-radius:var(--radius); background:white; padding:36px 24px; text-align:center; cursor:pointer; transition:all .25s; }
+.upload-zone { border:2.5px dashed var(--border); border-radius:var(--radius); background:white; padding:32px 24px; text-align:center; cursor:pointer; transition:all .25s; }
 .upload-zone:hover { border-color:var(--saffron); background:var(--saffron-light); }
-.upload-icon { width:56px; height:56px; margin:0 auto 14px; background:var(--saffron-light); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:24px; }
-.upload-zone h3 { font-family:'Playfair Display',serif; font-size:18px; font-weight:700; margin-bottom:6px; }
-.upload-zone p { font-size:13px; color:var(--muted); margin-bottom:16px; }
-.upload-btn { display:inline-block; padding:11px 24px; background:var(--saffron); color:white; border-radius:30px; font-size:14px; font-weight:500; border:none; cursor:pointer; font-family:'DM Sans',sans-serif; }
+.upload-icon { width:52px; height:52px; margin:0 auto 12px; background:var(--saffron-light); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:22px; }
+.upload-zone h3 { font-family:'Playfair Display',serif; font-size:17px; font-weight:700; margin-bottom:6px; }
+.upload-zone p { font-size:13px; color:var(--muted); margin-bottom:14px; }
+.upload-btn { padding:10px 22px; background:var(--saffron); color:white; border-radius:30px; font-size:14px; font-weight:500; border:none; cursor:pointer; font-family:'DM Sans',sans-serif; }
 #file-input { display:none; }
 
-.preview-wrap { margin:20px 0; display:none; }
-.preview-img { width:100%; max-height:240px; object-fit:cover; border-radius:var(--radius); border:1px solid var(--border); }
+.preview-wrap { margin:16px 0; display:none; }
+.preview-img { width:100%; max-height:220px; object-fit:cover; border-radius:var(--radius); border:1px solid var(--border); }
 .change-img { display:block; text-align:center; margin-top:8px; font-size:13px; color:var(--muted); cursor:pointer; }
+.analyze-btn { width:100%; padding:14px; background:linear-gradient(135deg,var(--saffron),var(--saffron-dark)); color:white; border:none; border-radius:var(--radius); font-size:15px; font-weight:500; font-family:'DM Sans',sans-serif; cursor:pointer; margin-top:12px; display:none; transition:all .2s; }
+.analyze-btn:hover { transform:translateY(-2px); box-shadow:0 6px 20px rgba(232,130,26,.3); }
 
-.analyze-btn { width:100%; padding:15px; background:linear-gradient(135deg,var(--saffron),var(--saffron-dark)); color:white; border:none; border-radius:var(--radius); font-size:16px; font-weight:500; font-family:'DM Sans',sans-serif; cursor:pointer; margin-top:14px; display:none; transition:all .2s; }
-.analyze-btn:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(232,130,26,0.35); }
-
-.or-divider { display:flex; align-items:center; gap:12px; margin:20px 0; font-size:13px; color:var(--muted); }
-.or-divider::before, .or-divider::after { content:''; flex:1; height:1px; background:var(--border); }
-
-.ingredients-input { width:100%; padding:14px 16px; border:1.5px solid var(--border); border-radius:var(--radius); font-size:15px; font-family:'DM Sans',sans-serif; background:white; color:var(--ink); resize:none; height:90px; transition:border-color .2s; line-height:1.6; }
+.or-divider { display:flex; align-items:center; gap:12px; margin:18px 0; font-size:13px; color:var(--muted); }
+.or-divider::before,.or-divider::after { content:''; flex:1; height:1px; background:var(--border); }
+.ingredients-input { width:100%; padding:13px 16px; border:1.5px solid var(--border); border-radius:var(--radius); font-size:15px; font-family:'DM Sans',sans-serif; background:white; color:var(--ink); resize:none; height:88px; line-height:1.6; transition:border-color .2s; }
 .ingredients-input:focus { outline:none; border-color:var(--saffron); }
 .ingredients-input::placeholder { color:#BDB09A; }
-
 .text-search-btn { width:100%; padding:14px; background:var(--ink); color:white; border:none; border-radius:var(--radius); font-size:15px; font-weight:500; font-family:'DM Sans',sans-serif; cursor:pointer; margin-top:10px; transition:all .2s; }
 .text-search-btn:hover { background:#2D2010; transform:translateY(-1px); }
 
-.loading { text-align:center; padding:48px 24px; display:none; }
-.spinner { width:44px; height:44px; border:3px solid var(--border); border-top-color:var(--saffron); border-radius:50%; animation:spin .8s linear infinite; margin:0 auto 14px; }
+.loading { text-align:center; padding:44px 24px; display:none; }
+.spinner { width:42px; height:42px; border:3px solid var(--border); border-top-color:var(--saffron); border-radius:50%; animation:spin .8s linear infinite; margin:0 auto 12px; }
 @keyframes spin { to { transform:rotate(360deg); } }
-.loading p { font-size:14px; color:var(--muted); font-style:italic; }
-.load-steps { display:flex; flex-direction:column; gap:5px; margin-top:14px; font-size:13px; color:var(--muted); }
+.loading p { font-size:14px; color:var(--muted); font-style:italic; margin-bottom:14px; }
+.load-steps { display:flex; flex-direction:column; gap:5px; font-size:13px; color:var(--muted); }
 
 .results { display:none; }
-.results-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:18px; }
+.results-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:16px; }
 .results-header h2 { font-family:'Playfair Display',serif; font-size:20px; font-weight:700; }
 .try-again { font-size:13px; color:var(--saffron); cursor:pointer; font-weight:500; border:none; background:none; font-family:'DM Sans',sans-serif; }
-.detected { background:var(--saffron-light); border:1px solid rgba(232,130,26,.2); border-radius:10px; padding:10px 14px; margin-bottom:18px; font-size:13px; color:var(--saffron-dark); font-weight:500; }
+.detected { background:var(--saffron-light); border:1px solid rgba(232,130,26,.2); border-radius:10px; padding:10px 14px; margin-bottom:16px; font-size:13px; color:var(--saffron-dark); font-weight:500; }
 
-.recipe-card { background:white; border-radius:var(--radius); border:1px solid var(--border); overflow:hidden; margin-bottom:14px; transition:box-shadow .2s; animation:slideUp .4s ease both; }
+.recipe-card { background:white; border-radius:var(--radius); border:1px solid var(--border); overflow:hidden; margin-bottom:12px; transition:box-shadow .2s; animation:slideUp .4s ease both; }
 .recipe-card:nth-child(2){animation-delay:.1s} .recipe-card:nth-child(3){animation-delay:.2s}
-@keyframes slideUp { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:translateY(0)} }
-.recipe-card:hover { box-shadow:0 6px 24px rgba(26,18,8,.08); }
-.recipe-header { display:flex; align-items:center; gap:12px; padding:14px 18px; cursor:pointer; }
-.recipe-emoji { font-size:28px; flex-shrink:0; }
-.recipe-name { font-family:'Playfair Display',serif; font-size:17px; font-weight:700; margin-bottom:4px; }
+@keyframes slideUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+.recipe-card:hover { box-shadow:0 6px 20px rgba(26,18,8,.08); }
+.recipe-header { display:flex; align-items:center; gap:12px; padding:14px 16px; cursor:pointer; }
+.recipe-name { font-family:'Playfair Display',serif; font-size:16px; font-weight:700; margin-bottom:4px; }
 .recipe-tags { display:flex; gap:5px; flex-wrap:wrap; }
 .rtag { font-size:10px; padding:2px 7px; border-radius:20px; font-weight:500; }
 .rtag-time{background:#E6F1FB;color:#185FA5} .rtag-easy{background:#E1F5EE;color:#0F6E56}
-.rtag-spicy{background:#FAECE7;color:#993C1D} .rtag-veg{background:#EAF3DE;color:#3B6D11}
-.rtag-nonveg{background:#FCEBEB;color:#A32D2D}
-.toggle { width:26px; height:26px; border-radius:50%; background:var(--saffron-light); display:flex; align-items:center; justify-content:center; font-size:13px; color:var(--saffron-dark); transition:all .2s; flex-shrink:0; margin-left:auto; font-weight:bold; }
+.rtag-spicy{background:#FAECE7;color:#993C1D} .rtag-veg{background:#EAF3DE;color:#3B6D11} .rtag-nonveg{background:#FCEBEB;color:#A32D2D}
+.toggle { width:24px; height:24px; border-radius:50%; background:var(--saffron-light); display:flex; align-items:center; justify-content:center; font-size:12px; color:var(--saffron-dark); transition:all .2s; flex-shrink:0; margin-left:auto; font-weight:bold; }
 .recipe-card.open .toggle { transform:rotate(180deg); background:var(--saffron); color:white; }
-.recipe-body { display:none; padding:18px; border-top:1px solid var(--border); }
+.recipe-body { display:none; padding:16px; border-top:1px solid var(--border); }
 .recipe-card.open .recipe-body { display:block; }
-.section-title { font-size:10px; font-weight:500; text-transform:uppercase; letter-spacing:.08em; color:var(--muted); margin-bottom:8px; }
-.ing-list { display:flex; flex-direction:column; gap:5px; margin-bottom:16px; }
+.sec-title { font-size:10px; font-weight:500; text-transform:uppercase; letter-spacing:.08em; color:var(--muted); margin-bottom:8px; }
+.ing-list { display:flex; flex-direction:column; gap:5px; margin-bottom:14px; }
 .ing-item { display:flex; align-items:center; gap:8px; font-size:14px; }
 .ing-dot { width:5px; height:5px; border-radius:50%; background:var(--saffron); flex-shrink:0; }
-.steps-list { display:flex; flex-direction:column; gap:10px; }
+.steps-list { display:flex; flex-direction:column; gap:9px; }
 .step-item { display:flex; gap:10px; font-size:14px; line-height:1.6; }
-.step-badge { min-width:20px; height:20px; border-radius:50%; background:var(--saffron); color:white; font-size:10px; font-weight:500; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:3px; }
-.tip { background:var(--saffron-light); border-left:3px solid var(--saffron); border-radius:0 8px 8px 0; padding:10px 14px; font-size:13px; color:var(--saffron-dark); margin-top:14px; line-height:1.6; }
+.step-num { min-width:20px; height:20px; border-radius:50%; background:var(--saffron); color:white; font-size:10px; font-weight:500; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:3px; }
+.tip { background:var(--saffron-light); border-left:3px solid var(--saffron); border-radius:0 8px 8px 0; padding:10px 14px; font-size:13px; color:var(--saffron-dark); margin-top:12px; line-height:1.6; }
 
-.error-box { background:#FCEBEB; border:1px solid #F09595; border-radius:var(--radius); padding:16px 20px; margin:16px 0; font-size:14px; color:#A32D2D; line-height:1.6; display:none; }
+.error-box { background:#FCEBEB; border:1px solid #F09595; border-radius:var(--radius); padding:14px 18px; margin:14px 0; font-size:13px; color:#A32D2D; line-height:1.6; display:none; }
 
-footer { text-align:center; margin-top:48px; padding-top:20px; border-top:1px solid var(--border); font-size:12px; color:var(--muted); line-height:1.8; }
+/* Paywall */
+.paywall-overlay { display:none; position:fixed; inset:0; background:rgba(26,18,8,.6); z-index:100; align-items:flex-end; justify-content:center; }
+.paywall-overlay.show { display:flex; }
+.paywall-sheet { background:white; border-radius:24px 24px 0 0; padding:28px 24px 44px; width:100%; max-width:680px; animation:slideSheet .3s ease; }
+@keyframes slideSheet { from{transform:translateY(100%)} to{transform:translateY(0)} }
+.paywall-handle { width:36px; height:4px; background:var(--border); border-radius:2px; margin:0 auto 20px; }
+.paywall-icon { font-size:40px; text-align:center; margin-bottom:10px; }
+.paywall-sheet h2 { font-family:'Playfair Display',serif; font-size:22px; font-weight:900; text-align:center; margin-bottom:6px; }
+.paywall-sheet > p { font-size:14px; color:var(--muted); text-align:center; margin-bottom:20px; line-height:1.6; }
+.features { display:flex; flex-direction:column; gap:8px; margin-bottom:20px; }
+.feat { display:flex; align-items:center; gap:10px; font-size:14px; }
+.feat-check { width:20px; height:20px; border-radius:50%; background:var(--leaf); color:white; font-size:10px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.plan-opts { display:flex; flex-direction:column; gap:8px; margin-bottom:18px; }
+.plan-opt { border:2px solid var(--border); border-radius:12px; padding:12px 14px; cursor:pointer; display:flex; align-items:center; gap:12px; transition:all .2s; }
+.plan-opt:hover,.plan-opt.sel { border-color:var(--saffron); background:var(--saffron-light); }
+.plan-price { font-family:'Playfair Display',serif; font-size:20px; font-weight:700; }
+.plan-desc { font-size:12px; color:var(--muted); }
+.plan-pill { margin-left:auto; font-size:10px; font-weight:500; background:var(--saffron); color:white; padding:2px 8px; border-radius:20px; }
+.pay-btn { width:100%; padding:15px; background:var(--saffron); color:white; border:none; border-radius:var(--radius); font-size:15px; font-weight:500; font-family:'DM Sans',sans-serif; cursor:pointer; transition:background .2s; }
+.pay-btn:hover { background:var(--saffron-dark); }
+.paywall-close { display:block; text-align:center; margin-top:12px; font-size:13px; color:var(--muted); cursor:pointer; border:none; background:none; font-family:'DM Sans',sans-serif; width:100%; }
+
+footer { text-align:center; margin-top:40px; padding-top:18px; border-top:1px solid var(--border); font-size:12px; color:var(--muted); line-height:1.8; }
 </style>
 </head>
 <body>
@@ -125,31 +142,35 @@ footer { text-align:center; margin-top:48px; padding-top:20px; border-top:1px so
       <button class="lang-btn" data-lang="Telugu" onclick="setLang(this)">తెలుగు</button>
       <button class="lang-btn" data-lang="Kannada" onclick="setLang(this)">ಕನ್ನಡ</button>
     </div>
-    <button class="pro-badge" onclick="showPaywall()">✦ Pro</button>
+    <button class="pro-badge" onclick="openPaywall()">✦ Pro</button>
   </header>
 
-  <!-- API Key Setup -->
+  <!-- Groq API Setup -->
   <div class="setup-banner" id="setup-banner">
-    <h3>⚡ One-time setup — paste your Claude API key to activate</h3>
-    <div class="key-input-wrap">
-      <input type="password" class="key-input" id="api-key-input" placeholder="sk-ant-api03-..." />
-      <button class="key-save-btn" onclick="saveKey()">Activate →</button>
+    <h3>⚡ Free setup — get your Groq API key (takes 2 minutes, 100% free)</h3>
+    <p>Groq is completely free. No credit card needed.</p>
+    <div class="setup-steps">
+      <div class="setup-step"><strong>1.</strong> Open <a href="https://console.groq.com" target="_blank" class="groq-link">console.groq.com</a> → Sign up free</div>
+      <div class="setup-step"><strong>2.</strong> Click <strong>"API Keys"</strong> on the left → click <strong>"Create API Key"</strong></div>
+      <div class="setup-step"><strong>3.</strong> Copy the key (starts with <strong>gsk_</strong>) → paste below</div>
     </div>
-    <div class="key-note">Your key is saved only in your browser. Never sent anywhere except directly to Anthropic.</div>
+    <div class="key-row">
+      <input type="password" class="key-input" id="api-key-input" placeholder="gsk_..." />
+      <button class="key-save-btn" onclick="saveKey()">Activate Free →</button>
+    </div>
+    <div class="key-note">🔒 Saved only in your browser. Never shared with anyone.</div>
   </div>
 
   <div class="hero">
     <h1>What can I cook<br>with <em>what I have?</em></h1>
-    <p>Photo your fridge or type your ingredients.<br>Get 3 delicious Indian recipes instantly.</p>
+    <p>Type your ingredients. Get 3 delicious Indian recipes instantly.<br>Free forever. No sign up needed.</p>
   </div>
 
   <div id="main-form">
-    <div class="upload-zone" id="upload-zone" onclick="document.getElementById('file-input').click()"
-      ondragover="ev.preventDefault();this.style.borderColor='var(--saffron)'"
-      ondrop="handleDrop(event)">
+    <div class="upload-zone" id="upload-zone" onclick="document.getElementById('file-input').click()">
       <div class="upload-icon">📷</div>
       <h3>Photo your kitchen</h3>
-      <p>Fridge, pantry, vegetable basket — snap it</p>
+      <p>Fridge, pantry, vegetables — snap it</p>
       <button class="upload-btn" onclick="event.stopPropagation();document.getElementById('file-input').click()">Take / Upload Photo</button>
       <input type="file" id="file-input" accept="image/*" capture="environment" onchange="handleFile(this)">
     </div>
@@ -189,7 +210,32 @@ footer { text-align:center; margin-top:48px; padding-top:20px; border-top:1px so
 </div>
 
 <!-- Paywall -->
-<div id="paywall" onclick="if(event.target===this)this.style.display='none'" style="display:none;position:fixed;inset:0;background:rgba(26,18,8,.6);z-index:100;align-items:flex-end;justify-content:center;display:none">
+<div class="paywall-overlay" id="paywall" onclick="if(event.target===this)closePaywall()">
+  <div class="paywall-sheet">
+    <div class="paywall-handle"></div>
+    <div class="paywall-icon">✨</div>
+    <h2>Unlock TiffinAI Pro</h2>
+    <p>Weekly meal plans, voice instructions<br>& regional cuisine packs</p>
+    <div class="features">
+      <div class="feat"><div class="feat-check">✓</div>Unlimited searches per day</div>
+      <div class="feat"><div class="feat-check">✓</div>Voice instructions in Tamil, Hindi, Telugu & more</div>
+      <div class="feat"><div class="feat-check">✓</div>Weekly meal planner — zero food waste</div>
+      <div class="feat"><div class="feat-check">✓</div>Regional packs — Chettinad, Mughlai, Bengali</div>
+      <div class="feat"><div class="feat-check">✓</div>Save & share favourite recipes</div>
+    </div>
+    <div class="plan-opts">
+      <div class="plan-opt sel" onclick="selPlan(this,199)">
+        <div><div class="plan-price">₹199<span style="font-size:13px;font-weight:400">/month</span></div><div class="plan-desc">Cancel anytime</div></div>
+        <div class="plan-pill">Popular</div>
+      </div>
+      <div class="plan-opt" onclick="selPlan(this,999)">
+        <div><div class="plan-price">₹999<span style="font-size:13px;font-weight:400">/year</span></div><div class="plan-desc">Save ₹1,389</div></div>
+        <div class="plan-pill" style="background:#0F6E56">Save 58%</div>
+      </div>
+    </div>
+    <button class="pay-btn" onclick="pay()">Start Free 7-Day Trial →</button>
+    <button class="paywall-close" onclick="closePaywall()">No thanks</button>
+  </div>
 </div>
 
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
@@ -197,50 +243,38 @@ footer { text-align:center; margin-top:48px; padding-top:20px; border-top:1px so
 const RAZORPAY_KEY = 'rzp_test_SXAY3MLFcU03RL';
 let selectedLang = 'English';
 let imageBase64 = null;
+let selectedPlan = 199;
 
-// ── API KEY MANAGEMENT ──────────────────────────────────
+// ── INIT ─────────────────────────────────────────────────
+window.onload = () => {
+  if (getKey()) document.getElementById('setup-banner').style.display = 'none';
+};
+
+// ── KEY ──────────────────────────────────────────────────
 function saveKey() {
   const key = document.getElementById('api-key-input').value.trim();
-  if (!key.startsWith('sk-ant-')) {
-    alert('That doesn\'t look right. Your key should start with sk-ant-');
+  if (!key.startsWith('gsk_')) {
+    alert('Please enter a valid Groq key — it starts with gsk_\n\nGet one free at console.groq.com');
     return;
   }
-  localStorage.setItem('tiffin_api_key', key);
+  localStorage.setItem('tiffin_groq_key', key);
   document.getElementById('setup-banner').style.display = 'none';
-  showToast('✅ API key saved! You\'re ready to cook.');
+  toast('✅ Activated! Ready to find recipes.');
 }
+function getKey() { return localStorage.getItem('tiffin_groq_key'); }
 
-function getKey() {
-  return localStorage.getItem('tiffin_api_key');
-}
-
-// Hide banner if key already saved
-window.onload = function() {
-  if (getKey()) {
-    document.getElementById('setup-banner').style.display = 'none';
-  }
-}
-
-// ── LANGUAGE ────────────────────────────────────────────
+// ── LANG ─────────────────────────────────────────────────
 function setLang(btn) {
   document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
   selectedLang = btn.dataset.lang;
 }
 
-// ── FILE HANDLING ───────────────────────────────────────
-function handleFile(input) {
-  if (input.files[0]) processFile(input.files[0]);
-}
-
-function handleDrop(e) {
-  e.preventDefault();
-  if (e.dataTransfer.files[0]) processFile(e.dataTransfer.files[0]);
-}
-
+// ── FILES ────────────────────────────────────────────────
+function handleFile(input) { if (input.files[0]) processFile(input.files[0]); }
 function processFile(file) {
   const reader = new FileReader();
-  reader.onload = (e) => {
+  reader.onload = e => {
     imageBase64 = e.target.result.split(',')[1];
     document.getElementById('preview-img').src = e.target.result;
     document.getElementById('upload-zone').style.display = 'none';
@@ -249,14 +283,12 @@ function processFile(file) {
   };
   reader.readAsDataURL(file);
 }
-
 function resetImage() {
   imageBase64 = null;
   document.getElementById('upload-zone').style.display = 'block';
   document.getElementById('preview-wrap').style.display = 'none';
   document.getElementById('analyze-btn').style.display = 'none';
 }
-
 function resetAll() {
   resetImage();
   document.getElementById('ingredients-text').value = '';
@@ -265,200 +297,168 @@ function resetAll() {
   document.getElementById('error-box').style.display = 'none';
 }
 
-// ── CLAUDE API CALL ─────────────────────────────────────
-async function callClaude(messages) {
+// ── GROQ API ─────────────────────────────────────────────
+async function callGroq(userMessage) {
   const key = getKey();
   if (!key) {
     document.getElementById('setup-banner').style.display = 'block';
-    document.getElementById('api-key-input').focus();
     hideLoading();
+    document.getElementById('api-key-input').focus();
     return null;
   }
 
-  const systemPrompt = `You are TiffinAI, an expert Indian chef who knows every regional Indian cuisine — Tamil Nadu, Bengali, Punjabi, Hyderabadi, Maharashtrian, Kerala and more.
-
-Given ingredients, suggest 3 practical delicious Indian recipes the person can make RIGHT NOW.
-
-Respond ONLY with valid JSON — no extra text, no markdown:
+  const system = `You are TiffinAI, an expert Indian chef who knows every regional Indian cuisine deeply.
+Given ingredients, suggest exactly 3 practical delicious Indian recipes.
+Respond ONLY with valid JSON, no extra text:
 {
-  "detected_ingredients": "comma-separated list",
+  "detected_ingredients": "comma-separated list of ingredients",
   "recipes": [
     {
       "name": "Recipe Name",
       "time": "20 mins",
-      "tags": ["veg", "easy"],
-      "ingredients": ["1 cup rice", "2 tomatoes"],
-      "steps": ["Heat oil...", "Add onions..."],
-      "tip": "Chef tip here"
+      "tags": ["veg","easy"],
+      "ingredients": ["1 cup rice","2 tomatoes","..."],
+      "steps": ["Heat oil in pan...","Add onions...","..."],
+      "tip": "One helpful chef tip"
     }
   ]
 }
+Tags allowed: veg, nonveg, spicy, easy, quick.
+Always give exactly 3 recipes. Respond entirely in ${selectedLang} language.
+Make recipes practical and use most of the given ingredients.`;
 
-Tags: veg, nonveg, spicy, easy, quick. Always give exactly 3 recipes. Respond in ${selectedLang} language.`;
-
-  const response = await fetch('https://api.anthropic.com/v1/messages', {
+  const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'x-api-key': key,
-      'anthropic-version': '2023-06-01',
-      'anthropic-dangerous-direct-browser-access': 'true'
+      'Authorization': `Bearer ${key}`
     },
     body: JSON.stringify({
-      model: 'claude-sonnet-4-20250514',
+      model: 'llama-3.3-70b-versatile',
       max_tokens: 2000,
-      system: systemPrompt,
-      messages
+      temperature: 0.7,
+      messages: [
+        { role: 'system', content: system },
+        { role: 'user', content: userMessage }
+      ]
     })
   });
 
-  if (!response.ok) {
-    const err = await response.json();
-    throw new Error(err.error?.message || 'API error ' + response.status);
+  if (!res.ok) {
+    const e = await res.json();
+    throw new Error(e.error?.message || 'API error ' + res.status);
   }
-
-  const data = await response.json();
-  return data.content[0]?.text || '';
+  const data = await res.json();
+  return data.choices[0]?.message?.content || '';
 }
 
-// ── ANALYZE IMAGE ───────────────────────────────────────
+// ── ANALYZE ──────────────────────────────────────────────
 async function analyzeImage() {
-  showLoading();
-  try {
-    const text = await callClaude([{
-      role: 'user',
-      content: [
-        { type: 'image', source: { type: 'base64', media_type: 'image/jpeg', data: imageBase64 } },
-        { type: 'text', text: 'Identify all food ingredients visible in this kitchen/fridge photo and suggest 3 Indian recipes I can make with them.' }
-      ]
-    }]);
-    if (text) showResults(parseRecipes(text));
-  } catch(e) { showError(e.message); }
+  // Groq free tier doesn't support vision — use text description
+  const desc = prompt('Describe what you see in your kitchen/fridge:\n(e.g. rice, dal, onion, tomato, paneer)');
+  if (!desc) return;
+  document.getElementById('ingredients-text').value = desc;
+  analyzeText();
 }
 
-// ── ANALYZE TEXT ────────────────────────────────────────
 async function analyzeText() {
   const ing = document.getElementById('ingredients-text').value.trim();
   if (!ing) { document.getElementById('ingredients-text').focus(); return; }
   showLoading();
   try {
-    const text = await callClaude([{
-      role: 'user',
-      content: `I have these ingredients: ${ing}\n\nSuggest 3 Indian recipes I can make right now.`
-    }]);
-    if (text) showResults(parseRecipes(text));
+    const raw = await callGroq(`I have these ingredients: ${ing}\n\nSuggest 3 Indian recipes I can make right now.`);
+    if (raw) showResults(JSON.parse(raw.match(/\{[\s\S]*\}/)[0]));
   } catch(e) { showError(e.message); }
 }
 
-// ── PARSE ───────────────────────────────────────────────
-function parseRecipes(raw) {
-  const match = raw.match(/\{[\s\S]*\}/);
-  if (!match) throw new Error('Could not read recipe response. Please try again.');
-  return JSON.parse(match[0]);
-}
-
-// ── LOADING ─────────────────────────────────────────────
+// ── UI HELPERS ───────────────────────────────────────────
 function showLoading() {
   document.getElementById('main-form').style.display = 'none';
   document.getElementById('error-box').style.display = 'none';
   document.getElementById('results').style.display = 'none';
   document.getElementById('loading').style.display = 'block';
-  const msgs = ['Scanning your ingredients...','Matching perfect recipes...','Writing instructions...'];
   ['ls1','ls2','ls3'].forEach((id,i) => {
-    setTimeout(() => {
-      document.getElementById(id).style.opacity = '1';
-      document.getElementById('load-msg').textContent = msgs[i];
-    }, i * 1100);
+    setTimeout(() => document.getElementById(id).style.opacity='1', i*1000);
   });
 }
-
 function hideLoading() {
   document.getElementById('loading').style.display = 'none';
   document.getElementById('main-form').style.display = 'block';
 }
 
-// ── RESULTS ─────────────────────────────────────────────
 function showResults(data) {
   document.getElementById('loading').style.display = 'none';
   document.getElementById('results').style.display = 'block';
-  if (data.detected_ingredients) {
-    document.getElementById('detected').textContent = '🥕 Detected: ' + data.detected_ingredients;
-  }
+  if (data.detected_ingredients) document.getElementById('detected').textContent = '🥕 Using: ' + data.detected_ingredients;
   document.getElementById('results-title').textContent = data.recipes.length + ' recipes for you 🍽️';
   const list = document.getElementById('recipe-list');
   list.innerHTML = '';
   const emojis = ['🍛','🥘','🫕'];
-  data.recipes.forEach((r, i) => {
-    const tagMap = { veg:'<span class="rtag rtag-veg">🟢 Veg</span>', nonveg:'<span class="rtag rtag-nonveg">🔴 Non-veg</span>', spicy:'<span class="rtag rtag-spicy">🌶️ Spicy</span>', easy:'<span class="rtag rtag-easy">Easy</span>', quick:'<span class="rtag rtag-easy">Quick</span>' };
-    const tags = (r.tags||[]).map(t => tagMap[t]||`<span class="rtag rtag-easy">${t}</span>`).join('');
-    const ings = (r.ingredients||[]).map(x => `<div class="ing-item"><div class="ing-dot"></div>${x}</div>`).join('');
-    const steps = (r.steps||[]).map((s,j) => `<div class="step-item"><div class="step-badge">${j+1}</div><span>${s}</span></div>`).join('');
-    const tip = r.tip ? `<div class="tip">💡 ${r.tip}</div>` : '';
-    list.innerHTML += `
-      <div class="recipe-card" id="rc${i}">
-        <div class="recipe-header" onclick="document.getElementById('rc${i}').classList.toggle('open')">
-          <div style="font-size:28px">${emojis[i]||'🍽️'}</div>
-          <div style="flex:1">
-            <div class="recipe-name">${r.name}</div>
-            <div class="recipe-tags">${r.time?`<span class="rtag rtag-time">⏱ ${r.time}</span>`:''}${tags}</div>
-          </div>
-          <div class="toggle">▾</div>
-        </div>
-        <div class="recipe-body">
-          <div class="section-title">Ingredients</div>
-          <div class="ing-list">${ings}</div>
-          <div class="section-title">Steps</div>
-          <div class="steps-list">${steps}</div>
-          ${tip}
-        </div>
-      </div>`;
+  const tagMap = { veg:'<span class="rtag rtag-veg">🟢 Veg</span>', nonveg:'<span class="rtag rtag-nonveg">🔴 Non-veg</span>', spicy:'<span class="rtag rtag-spicy">🌶️ Spicy</span>', easy:'<span class="rtag rtag-easy">Easy</span>', quick:'<span class="rtag rtag-easy">Quick</span>' };
+  data.recipes.forEach((r,i) => {
+    const tags = (r.tags||[]).map(t=>tagMap[t]||`<span class="rtag rtag-easy">${t}</span>`).join('');
+    const ings = (r.ingredients||[]).map(x=>`<div class="ing-item"><div class="ing-dot"></div>${x}</div>`).join('');
+    const steps = (r.steps||[]).map((s,j)=>`<div class="step-item"><div class="step-num">${j+1}</div><span>${s}</span></div>`).join('');
+    list.innerHTML += `<div class="recipe-card" id="rc${i}">
+      <div class="recipe-header" onclick="document.getElementById('rc${i}').classList.toggle('open')">
+        <div style="font-size:26px;flex-shrink:0">${emojis[i]}</div>
+        <div style="flex:1"><div class="recipe-name">${r.name}</div>
+        <div class="recipe-tags">${r.time?`<span class="rtag rtag-time">⏱ ${r.time}</span>`:''}${tags}</div></div>
+        <div class="toggle">▾</div>
+      </div>
+      <div class="recipe-body">
+        <div class="sec-title">Ingredients</div><div class="ing-list">${ings}</div>
+        <div class="sec-title">Steps</div><div class="steps-list">${steps}</div>
+        ${r.tip?`<div class="tip">💡 ${r.tip}</div>`:''}
+      </div></div>`;
   });
 }
 
-// ── ERROR ────────────────────────────────────────────────
 function showError(msg) {
-  document.getElementById('loading').style.display = 'none';
-  document.getElementById('main-form').style.display = 'block';
+  hideLoading();
   const box = document.getElementById('error-box');
   box.style.display = 'block';
-
-  // Handle common errors helpfully
-  let friendlyMsg = msg;
-  if (msg.includes('401') || msg.includes('invalid x-api-key') || msg.includes('authentication')) {
-    friendlyMsg = '❌ Invalid API key. Please check your key and try again. Click the yellow setup box at the top.';
-    localStorage.removeItem('tiffin_api_key');
+  if (msg.includes('401') || msg.includes('invalid_api_key')) {
+    localStorage.removeItem('tiffin_groq_key');
     document.getElementById('setup-banner').style.display = 'block';
-  } else if (msg.includes('insufficient_quota') || msg.includes('credit')) {
-    friendlyMsg = '❌ Your Anthropic account needs credits. Go to console.anthropic.com → Billing → Add $5.';
-  } else if (msg.includes('fetch') || msg.includes('network')) {
-    friendlyMsg = '❌ Network error. Check your internet connection and try again.';
+    box.innerHTML = '❌ Invalid Groq key. Please re-enter your key above.';
+  } else if (msg.includes('rate_limit')) {
+    box.innerHTML = '⏳ Too many requests. Wait 1 minute and try again.';
+  } else {
+    box.innerHTML = '❌ Error: ' + msg + ' — Please try again.';
   }
-  box.innerHTML = friendlyMsg;
 }
 
-// ── TOAST ────────────────────────────────────────────────
-function showToast(msg) {
+function toast(msg) {
   const t = document.createElement('div');
-  t.style.cssText = 'position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#2E7D52;color:white;padding:12px 22px;border-radius:30px;font-size:14px;font-weight:500;z-index:999;font-family:DM Sans,sans-serif;box-shadow:0 6px 20px rgba(0,0,0,.2)';
+  t.style.cssText = 'position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#2E7D52;color:white;padding:12px 22px;border-radius:30px;font-size:14px;font-weight:500;z-index:999;font-family:DM Sans,sans-serif;box-shadow:0 6px 20px rgba(0,0,0,.2);white-space:nowrap';
   t.textContent = msg;
   document.body.appendChild(t);
   setTimeout(() => t.remove(), 3500);
 }
 
-function showPaywall() {
-  const options = {
+// ── PAYWALL ──────────────────────────────────────────────
+function openPaywall() { document.getElementById('paywall').classList.add('show'); }
+function closePaywall() { document.getElementById('paywall').classList.remove('show'); }
+function selPlan(el, price) {
+  document.querySelectorAll('.plan-opt').forEach(p => p.classList.remove('sel'));
+  el.classList.add('sel');
+  selectedPlan = price;
+}
+function pay() {
+  new Razorpay({
     key: RAZORPAY_KEY,
-    amount: 19900,
+    amount: selectedPlan * 100,
     currency: 'INR',
-    name: 'TiffinAI Pro',
-    description: 'Monthly subscription',
+    name: 'TiffinAI',
+    description: selectedPlan === 199 ? 'Pro Monthly' : 'Pro Annual',
     handler: function(r) {
-      localStorage.setItem('tiffin_pro', 'true');
-      showToast('🎉 Welcome to TiffinAI Pro!');
+      localStorage.setItem('tiffin_pro','true');
+      closePaywall();
+      toast('🎉 Welcome to TiffinAI Pro!');
     },
     theme: { color: '#E8821A' }
-  };
-  new Razorpay(options).open();
+  }).open();
 }
 </script>
 
